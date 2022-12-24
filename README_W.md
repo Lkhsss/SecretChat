@@ -98,6 +98,14 @@
 
 ---
 
+## 关于安全
+
+因为 REST api 的许多操作需要 master key，所以直接改成使用 master key 了（懒。虽然这样密钥容易泄露，但是咱都是白嫖的 leancloud，泄露出去也没什么吧......
+我争取想个办法解决这个问题。大家在打包应用时最好做好防反编译，防止 key 外泄。
+如若masterkey外泄了，可以前往获取masterkey的网页重置masterkey。
+
+---
+
 ## 变更记录
 
 [CHANGELOG.md](./CHANGELOG.md)
@@ -109,6 +117,7 @@
 - [x] 添加图标支持 --> [v1.0.1 加入图标支持](CHANGELOG.md#101)
 - [ ] 写一个**管理端**以用于管理对话和用户
 - [ ] 更新英文版 README 和 CHANGELOG(锻炼英语(~~bushi~~)
+- [ ] 解决必须使用 master key 才能使用 api 的权限问题
 
 ---
 

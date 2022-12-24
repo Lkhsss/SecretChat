@@ -13,7 +13,7 @@ debug = False   #是否开启debug模式
 # 构建标头
 header = {
     "X-LC-Id": AppID,
-    "X-LC-Key": AppKey,
+    "X-LC-Key": MasterKey,",master"
     "Content-Type": "application/json",
     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Mobile Safari/537.36",
     }
@@ -200,7 +200,7 @@ class leancloud():
         '''
         log("send_message()")
         api_url = "{}/1.2/rtm/conversations/{}/messages".format(REST_api, objectId)
-        header['X-LC-Key'] = '{},master'.format(MasterKey)#使用MasterKey
+        header['X-LC-Key'] = '{},master'.format(MasterKey) #使用MasterKey
 
         data = {"from_client": member_name, "message": message}
         log("发送消息：{}".format(message))

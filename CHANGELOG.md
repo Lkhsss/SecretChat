@@ -40,3 +40,4 @@
 2022.12.24
 - [**Fixed**] 解决了PyQt中因为限制子线程不允许修改ui部件而导致的闪退
 - [**Added**] `leancloud.py` 新增函数 `change_password()`。用于修改用户密码。
+- [**Change**] 使用Master key 操作暂时解决权限问题
