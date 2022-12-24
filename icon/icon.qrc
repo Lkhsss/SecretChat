@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>chat6.svg</file>
+        <file>chat6_red.svg</file>
+        <file>chat6_yellow.svg</file>
+        <file>chat6_green.svg</file>
+        <file>chat6_blue.svg</file>
+        <file>login.svg</file>
+        <file>register.svg</file>
+        <file>refresh.svg</file>
+        <file>join.svg</file>
+        <file>send.svg</file>
+        <file>space_station.ico</file>
+    </qresource>
+</RCC>

@@ -1,20 +1,29 @@
-from PyQt5.QtCore import QThread, QMutex
+import sys
+import time
+from PyQt5.QtCore import QThread, QMutex, pyqtSignal
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
-import sys
+
 from leancloud import leancloud  # 引入文件类
+from Ui_main_windows import Ui_MainWindow#引入ui文件
 
-import time
+#############引入资源文件，勿删
+import icon_rc
+#############删了图标啥的就都没有了
 
-from Ui_main_windows import Ui_MainWindow # 引入ui文件
+# 任务栏图标未更改的解决方案
+import ctypes
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")#更改任务栏图标
 
-version = "1.0.0"
+version = "1.0.2" # 版本号。详见CHANGELOG
 
 class Mainwindow_ui(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+
+        self.set_icon()# 设置图标
 
         self.leancloud = leancloud()
 
@@ -31,6 +40,23 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
         self.pushButton_join.setDisabled(True)  # 禁用加入按钮，登陆后解开
         self.comboBox_conversation.setDisabled(True)  # 禁用选择框
         self.plainTextEdit_inputbox.setDisabled(True)  # 禁用输入框
+
+    def set_icon(self, status='Nomal'):
+        '''
+        Nomal, Error, Warn, login, chat
+        '''
+        icon = QIcon()#设置图标
+        if status == 'Nomal':
+            icon.addPixmap(QPixmap(":/icon/chat6.svg"), QIcon.Mode.Normal, QIcon.State.Off)
+        elif status == 'Error':
+            icon.addPixmap(QPixmap(":/icon/chat6_red.svg"), QIcon.Mode.Normal, QIcon.State.Off)
+        elif status == 'Warn':
+            icon.addPixmap(QPixmap(":/icon/chat6_yellow.svg"), QIcon.Mode.Normal, QIcon.State.Off)
+        elif status == 'login':
+            icon.addPixmap(QPixmap(":/icon/chat6_blue.svg"), QIcon.Mode.Normal, QIcon.State.Off)
+        elif status == 'chat':
+            icon.addPixmap(QPixmap(":/icon/chat6_green.svg"), QIcon.Mode.Normal, QIcon.State.Off)
+        self.setWindowIcon(icon)
 
     def get_chat(self):
         conversations_list = self.leancloud.search_conversations()
@@ -68,18 +94,22 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
 
         if username == "":
             self.log("WARN", "未填写用户名")
+            self.set_icon("Warn")
         elif password == "":
             self.log("WARN", "未填写密码")
+            self.set_icon("Warn")
         else:
-            data = self.leancloud.get_user_information(username)
+            data = self.leancloud.get_user_information(username)#如若没有用户，则返回False
             if data == False:
                 self.log("ERROR", "没有找到用户：[{}]".format(username))
+                self.set_icon("Error")
                 self.log("WARN", "请选择注册新用户")
             else:
                 self.log("INFO", "成功查询到用户[{}]".format(username))
                 log_back = self.leancloud.login(username, password)
                 if log_back == False:
                     self.log("ERROR", "密码错误")
+                    self.set_icon("Error")
                     self.lineEdit_password.clear()
                 else:  # 返回了用户数据
                     self.log("INFO", "用户[{}]登陆成功".format(log_back["username"]))
@@ -87,6 +117,7 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
                     self.user_data = log_back  # 设置用户数据为类变量
                     self.is_login = True  # 设置变量：已登陆
                     self.lineEdit_user.setText(log_back["username"])  # 设置名称
+                    self.set_icon("login")
                     self.get_chat()  # 刷新对话
                     self.disable_status_widget("login")
 
@@ -96,18 +127,22 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
 
         if username == "":
             self.log("WARN", "未填写用户名")
+            self.set_icon("Warn")
         elif password == "":
             self.log("WARN", "未填写密码")
+            self.set_icon("Warn")
         else:
             back_data = self.leancloud.create_user(username, password)
             if back_data == False:
                 self.log("ERROR", "用户名已存在，请重新创建")
+                self.set_icon("Error")
                 self.lineEdit_username.clear()  # 清除输入框
             else:
                 self.log("INFO", "用户[{}]注册成功".format(back_data["username"]))
                 self.lineEdit_user.setText(back_data["username"])  # 设置用户名称
                 self.user_data = back_data  # 设置用户数据为类变量
                 self.get_chat()  # 刷新对话
+                self.set_icon("login")# 设置图标
                 self.disable_status_widget("login")  # 解禁加入对话部件
 
     def join(self):
@@ -120,23 +155,30 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
 
         self.log("INFO", "用户[{}]加入对话[{}]".format(self.user_data["username"], selection))
 
+        self.set_icon("chat")
 
-        self.disable_status_widget("join")  # 解锁所有部件#FIXME
+        self.disable_status_widget("join")  # 解锁所有部件
 
-        # 直接开启子线程
-        self.threading_show_message()
+        self.threading_show_message() # 调用 调用子函数 函数
 
+    def show_message(self, message):
+        self.textBrowser_messsagebox.append(str(message))
 
     def threading_show_message(self):#开启子线程同步消息
         self.thread_1 = mythread(self.conversation_id)
+        self.thread_1.updated.connect(self.show_message)
         self.thread_1.start()
 
     def send_message(self):
         message = self.plainTextEdit_inputbox.toPlainText()
         if message == "":
             self.log("WARN", "不能发送空消息")
+            self.set_icon("Warn")
         else:
-            self.leancloud.send_message(self.conversation_id, self.user_data["username"], message)
+            self.leancloud.send_message(self.conversation_id, self.user_data["username"], message
+            )
+            print("发送消息")
+            self.set_icon("chat")
             self.plainTextEdit_inputbox.clear()  # 清除内容
 
     def log(self, level=None, message=None):
@@ -168,10 +210,12 @@ class Mainwindow_ui(QMainWindow, Ui_MainWindow):
         icon.addPixmap(QPixmap(":/icon/space_station.ico"), QIcon.Mode.Normal, QIcon.State.Off)
         QM = QMainWindow()
         QM.setWindowIcon(icon)
-        QMessageBox.about(QM, '关于我', "LKH\n一个普通的高中程序猿\n个人主页：https://lkhsss.github.io")
+        QMessageBox.about(QM, '关于作者', "LKH\n一个普通的高中程序猿\n个人主页：https://lkhsss.github.io")
 
 class mythread(QThread):
     thread_lock = QMutex()  # 创建线程锁
+
+    updated = pyqtSignal(str)
 
     def __init__(self, conversation_id):
         super().__init__()
@@ -196,13 +240,14 @@ class mythread(QThread):
             time.sleep(1)
 
     def show_message(self, messages):
-        messages = self.sort_message(messages)
+        messages = self.sort_message(messages)#数据排序再返回
         for i in messages:
             time_stamp = str(
                 time.strftime("%H:%M:%S", time.localtime(i["timestamp"] / 1000))
             )  # 时间戳转化为时间
             message = ("[{}]【{}】：{}").format(time_stamp, i["from"], i["data"])
-            ui.textBrowser_messsagebox.append(str(message))
+            # ui.textBrowser_messsagebox.append(str(message)) # <-弃用该直接用线程修改ui的方法，改用发送信号的方式
+            self.updated.emit(str(message))#发送信号，携带str参数message
 
     def sort_message(self, messages):  # 数据排序
         for i in range(len(messages)):  # 冒泡排序

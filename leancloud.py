@@ -343,7 +343,7 @@ class leancloud():
     def delete_user(self, username):
         """
         ## 删除用户函数
-        功能：删除一个用户
+        ### 功能：删除一个用户
 
         参数：`username` 用户名称
 
@@ -365,7 +365,8 @@ class leancloud():
 
     def change_password(self, session_token:str,objectId:str,old_password:str,new_password:str):
         '''
-        功能：更新用户密码
+        ## 更新密码函数
+        ### 功能：更新用户密码
         
         参数：`session_token` 用户的session_token，注册和登陆时会返回 | `objectId` 用户的objectId，注册和登陆时会返回 | `old_password` 用户旧的密码 | `new_password` 用户新的密码
         

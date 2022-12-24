@@ -78,12 +78,20 @@
             <property name="text">
              <string>注册</string>
             </property>
+            <property name="icon">
+             <iconset resource="icon/icon.qrc">
+              <normaloff>:/icon/register.svg</normaloff>:/icon/register.svg</iconset>
+            </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_login">
             <property name="text">
              <string>登陆</string>
+            </property>
+            <property name="icon">
+             <iconset resource="icon/icon.qrc">
+              <normaloff>:/icon/login.svg</normaloff>:/icon/login.svg</iconset>
             </property>
            </widget>
           </item>
@@ -127,12 +135,20 @@
             <property name="text">
              <string>刷新</string>
             </property>
+            <property name="icon">
+             <iconset resource="icon/icon.qrc">
+              <normaloff>:/icon/refresh.svg</normaloff>:/icon/refresh.svg</iconset>
+            </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_join">
             <property name="text">
              <string>加入</string>
+            </property>
+            <property name="icon">
+             <iconset resource="icon/icon.qrc">
+              <normaloff>:/icon/join.svg</normaloff>:/icon/join.svg</iconset>
             </property>
            </widget>
           </item>
@@ -229,6 +245,10 @@
           <property name="text">
            <string>发送</string>
           </property>
+          <property name="icon">
+           <iconset resource="icon/icon.qrc">
+            <normaloff>:/icon/send.svg</normaloff>:/icon/send.svg</iconset>
+          </property>
          </widget>
         </item>
        </layout>
@@ -295,6 +315,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="icon/icon.qrc"/>
+ </resources>
  <connections/>
 </ui>
