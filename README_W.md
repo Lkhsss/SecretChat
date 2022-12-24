@@ -124,7 +124,7 @@
 
 ## 开源协议
 
-[Apache-2.0 license](https://github.com/Lkhsss/SecretChat/blob/main/LICENSE)
+[Apache-2.0 license](LICENSE)
 
 作者：[Lkhsss](https://github.com/lkhsss)
 
