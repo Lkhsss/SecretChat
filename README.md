@@ -1,5 +1,5 @@
 #  秘密聊天室 - SecretChat
-  
+**中文 [README.md](README.md) | English [README_en.md](README_en.md)**
   
 前段时间突然发现 Leancloud 的免费功能，于是想写个应用。查看了[官方文档](https://leancloud.cn/docs/ )后发现能干的事挺多。之前写的东西都人模鬼样，于是这次想写一个像样一点的有点实用性的东西。于是写了这个应用。
   
@@ -142,7 +142,7 @@
   
 - [x] 添加图标支持 --> [v1.0.1 加入图标支持](CHANGELOG.md#101 )
 - [x] 写一个**管理端**以用于管理对话和用户 --> [v1.1.3 加入对话管理端](CHANGELOG.md#113 )
-- [ ] 更新英文版 README 和 CHANGELOG(锻炼英语(~~bushi~~)
+- [x] 更新英文版 README 和 CHANGELOG(锻炼英语(~~bushi~~)
 - [ ] 解决必须使用 master key 才能使用 api 的权限问题
 - [ ] 添加 github api 新版本检测
   
