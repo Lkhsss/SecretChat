@@ -41,3 +41,10 @@
 - [**Fixed**] 解决了PyQt中因为限制子线程不允许修改ui部件而导致的闪退
 - [**Added**] `leancloud.py` 新增函数 `change_password()`。用于修改用户密码。
 - [**Change**] 使用Master key 操作暂时解决权限问题
+
+## 1.1.3
+2022.12.31
+- [**Added**] 增加了简易的对话管理端
+- [**Fixed**] 请求头的Master key无法正常使用导致返回`{"code":1,"error":"Object is required."}`的问题
+- [**Fixed**] 修复了无法创建对话的问题
+- [**Fixed**] 更新`requirements.txt`，之前更换使用PyQt5库忘了更改

@@ -110,21 +110,9 @@
 ####  创建对话
   
   
-忘了写创建对话的 UI 了，以后会加上。
-现在先手动调用`leancloud.py`创建吧
+~~忘了写创建对话的 UI 了，以后会加上。现在先手动调用`leancloud.py`创建吧~~
+版本[1.1.3](CHANGELOG.md#113 )已经加入对话管理端
   
-- 先创建一个新的.py 文件
-- 写入
-  
-  ```python
-  from leancloud import leancloud
-  
-  Leancloud = leancloud() #初始化
-  print(Leancloud.create_conversation("TEST"))
-  ```
-  
-- - 正常情况下，会返回类似于`{'updatedAt': '', 'name': '', 'objectId': '', 'm': [], 'createdAt': ''}`的信息。
-  - 如果出错的话，应该是配置 rest api 没有配置对，或者代码打错了
   
 ####  其他操作
   
@@ -153,9 +141,10 @@
   
   
 - [x] 添加图标支持 --> [v1.0.1 加入图标支持](CHANGELOG.md#101 )
-- [ ] 写一个**管理端**以用于管理对话和用户
+- [x] 写一个**管理端**以用于管理对话和用户 --> [v1.1.3 加入对话管理端](CHANGELOG.md#113 )
 - [ ] 更新英文版 README 和 CHANGELOG(锻炼英语(~~bushi~~)
 - [ ] 解决必须使用 master key 才能使用 api 的权限问题
+- [ ] 添加 github api 新版本检测
   
 ---
   

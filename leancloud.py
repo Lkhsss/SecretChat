@@ -2,18 +2,19 @@ import requests
 import json
 
 
-AppID = "xxxxxxxxxxx" # AppID
-AppKey = "xxxxxxxxxxx" #AppKey
-MasterKey = "xxxxxxxxxxx" #MasterKey
-REST_api = "https://xxxxxxxxxxxx.com"  # REST api 的地址 | 注意末尾不要有"/"
+AppID = "xxxxxxxxxxxxxxx" # AppID
+AppKey = "xxxxxxxxxxxxxxxx" #AppKey
+MasterKey = "xxxxxxxxxxxxxxxxxxxx" #MasterKey
+REST_api = "https://xxxxxxxxxxxxx"  # REST api 的地址 | 注意末尾不要有"/"
 
 
 debug = False   #是否开启debug模式
 
 # 构建标头
+MasterKey = "{},master".format(MasterKey)
 header = {
     "X-LC-Id": AppID,
-    "X-LC-Key": MasterKey,",master"
+    "X-LC-Key": MasterKey,
     "Content-Type": "application/json",
     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Mobile Safari/537.36",
     }
@@ -30,22 +31,24 @@ class leancloud():
     def create_conversation(self, conversation_name):
         """
         ## 对话创建函数
-        ### 功能：创建一个对话。如果对话名称已存在，则返回该对话的信息
+        ### 功能：创建一个对话。如果对话名称已存在，则返回该对话的信息（要求使用masterkey）
 
         参数：`conversation_name` 将要创建的对话名称
 
         返回：对话信息 -> json {'unique': 是否唯一, 'updatedAt': '更新时间', 'name': '对话名称', 'objectId': '对话ID', 'm': [], 'createdAt': '对话创建时间', 'uniqueId': '独有ID'}
         
-        注意：不允许存在同名对话
+        注意：暂时允许存在同名对话
         """
 
         api_url = ("{}/1.2/rtm/conversations".format(REST_api))# 构建创建对话api
 
-        data = {"name": conversation_name, "unique": True}
+        data = {"name": conversation_name}
         data_json = json.dumps(data)  # 只需要传入data的json数据，不需要header的json
+        log(data_json)
         response = requests.post(
                 url=api_url, headers=header, data=data_json
             )  # 创建对话
+        log(response.text)
         if response.status_code == 403:
             return False
         elif response.status_code == 404:
