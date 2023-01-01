@@ -1,4 +1,14 @@
+<div align="center">
+
 # SecretChat
+
+**中文 [README.md](README.md) | English [README_en.md](README_en.md)**
+
+</div>
+
+![Alt](https://repobeats.axiom.co/api/embed/da72c82cf86ea1e24248bb0d9d95b5fe0b712f02.svg "Repobeats analytics image")
+
+---
 
 Recently I find Leancloud has many free functions can be used.So wanted to write a chat program.After reading[official document](https://docs.leancloud.app/),I thought there was a lot of freedom here.Every program I've written before looks like crap.So I want to make this program to be useful and formally.
 
@@ -7,7 +17,7 @@ This program is by design to just use the free serves of Leancloud(~~Free is the
 
 Actually Leancloud officially provides a Python library,but I don't know how to use. So I use REST api to make a new class.
 
-## Contens
+## Contents
 
 - [HOW TO USE](#how-to-use)
   - [Clone this project](#clone-this-project)
@@ -29,6 +39,8 @@ Actually Leancloud officially provides a Python library,but I don't know how to 
 - [development environments](#development-environments)
 - [LICENSE](#license)
 - [PS](#ps)
+
+---
 
 ## HOW TO USE
 

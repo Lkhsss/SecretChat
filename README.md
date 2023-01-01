@@ -1,6 +1,11 @@
+<div align="center">
+
 # 秘密聊天室 - SecretChat
 
 **中文 [README.md](README.md) | English [README_en.md](README_en.md)**
+</div>
+
+![Alt](https://repobeats.axiom.co/api/embed/da72c82cf86ea1e24248bb0d9d95b5fe0b712f02.svg "Repobeats analytics image")
 
 前段时间突然发现 Leancloud 的免费功能，于是想写个应用。查看了[官方文档](https://leancloud.cn/docs/)后发现能干的事挺多。之前写的东西都人模鬼样，于是这次想写一个像样一点的有点实用性的东西。于是写了这个应用。
 
