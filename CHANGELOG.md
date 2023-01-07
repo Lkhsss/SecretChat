@@ -44,7 +44,7 @@
 
 ## 1.1.3
 2022.12.31
-- [**Added**] 增加了简易的对话管理端
+- [**Added**] 增加了简易的对话管理端（详情请见[README](READEME.md/#)
 - [**Fixed**] 请求头的Master key无法正常使用导致返回`{"code":1,"error":"Object is required."}`的问题
 - [**Fixed**] 修复了无法创建对话的问题
 - [**Fixed**] 更新`requirements.txt`，之前更换使用PyQt5库忘了更改
