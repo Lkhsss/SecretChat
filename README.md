@@ -1,66 +1,43 @@
-#  秘密聊天室 - SecretChat
-  
-  
-前段时间突然发现 Leancloud 的免费功能，于是想写个应用。查看了[官方文档](https://leancloud.cn/docs/ )后发现能干的事挺多。之前写的东西都人模鬼样，于是这次想写一个像样一点的有点实用性的东西。于是写了这个应用。
-  
+<div align="center">
+
+# 秘密聊天室 - SecretChat
+
+**中文 [README.md](README.md) | English [README_en.md](README_en.md)**
+</div>
+
+![仓库统计图](https://repobeats.axiom.co/api/embed/da72c82cf86ea1e24248bb0d9d95b5fe0b712f02.svg "Repobeats analytics image")
+
+前段时间突然发现 Leancloud 的免费功能，于是想写个应用。查看了[官方文档](https://leancloud.cn/docs/)后发现能干的事挺多。之前写的东西都人模鬼样，于是这次想写一个像样一点的有点实用性的东西。于是写了这个应用。
+
 之所以取名“秘密”其实只是因为数据可以自己在后台查看而已(~~随便想的~~)。其实没啥安全性。
 这个程序利用 Leancloud 提供的免费服务，可以拥有单独的数据库和用户系统(~~白嫖党狂喜~~)。在注册了自己的 Leancloud 应用后，你们就可以使用 leancloud 提供的 API 接口使用这个应用了。
-  
+
 本来官方提供了 Python 库，但是功能不全(~~不会用~~)，所以自己用 rest api 写了个类(bushi
-  
-##  目录
-  
-  
-- [使用教程](#使用教程 )
-  - [clone 此项目](#clone-此项目 )
-    - [安装依赖](#安装依赖 )
-  - [获取 LeanCloud 的应用凭证](#获取-leancloud-的应用凭证 )
-    - [创建 LeanCloud 账户](#创建-leancloud-账户 )
-    - [点击创建应用](#点击创建应用 )
-    - [配置应用](#配置应用 )
-    - [点击设置](#点击设置 )
-    - [选择[设置]>[应用凭证]](#选择设置应用凭证 )
-    - [留存待用](#留存待用 )
-  - [配置 REST API](#配置-rest-api )
-  - [运行](#运行 )
-    - [创建对话](#创建对话 )
-    - [管理对话](#管理对话 )
-    - [其他操作](#其他操作 )
-- [关于安全](#关于安全 )
-- [变更记录](#变更记录 )
-- [TODO](#todo )
-- [开发环境](#开发环境 )
-- [开源协议](#开源协议 )
-- [另](#另 )
-  
-##  使用教程
-  
-  
-###  clone 此项目
-  
-  
-点击下载，或者直接在命令行中 `git clone https://github.com/Lkhsss/SecretChat.git`
-  
-####  安装依赖
-  
-  
-在项目主目录运行 `pip install -r requirements.txt`安装依赖库
-  
-这里推荐使用虚拟环境，方便以后打包
-  
+
 ---
-  
-###  获取 LeanCloud 的应用凭证
-  
-  
-####  创建 LeanCloud 账户
-  
-  
-前往 Leancloud 控制台([华北节点](https://console.leancloud.cn/ ) 和 [华东节点](https://console-e1.leancloud.cn ) 随便选一个，不要选**国际版**[^为啥不选国际版])，注册一个账号
-  
-####  点击创建应用
-  
-  
+
+## 使用教程
+
+### clone 此项目
+
+点击下载，或者直接在命令行中 `git clone https://github.com/Lkhsss/SecretChat.git`
+
+#### 安装依赖
+
+在项目主目录运行 `pip install -r requirements.txt`安装依赖库
+
+这里推荐使用虚拟环境，方便以后打包
+
+---
+
+### 获取 LeanCloud 的应用凭证
+
+#### 创建 LeanCloud 账户
+
+前往 Leancloud 控制台([华北节点](https://console.leancloud.cn/) 和 [华东节点](https://console-e1.leancloud.cn) 随便选一个，不要选**国际版**[^为啥不选国际版])，注册一个账号
+
+#### 点击创建应用
+
 <img title="" src="https://cdn.staticaly.com/gh/Lkhsss/picx@main/SecretChat/点击创建应用.3tkno01z18o0.webp" alt="点击创建应用" data-align="center" width="388">
   
 [^为啥不选国际版]: [国际版自 2022 年 8 月起，共享域名不再向中国大陆提供服务](https://forum.leancloud.cn/t/2022-8/25408 )
@@ -108,23 +85,18 @@
 运行出来就是酱紫
 ![运行](https://cdn.staticaly.com/gh/Lkhsss/picx@main/SecretChat/运行.1gxhpgprsbgg.webp )
   
-####  创建对话
-  
-  
+#### 创建对话
+
 ~~忘了写创建对话的 UI 了，以后会加上。现在先手动调用`leancloud.py`创建吧~~
-版本[1.1.3](CHANGELOG.md#113 )已经加入对话管理端
-  
-####  管理对话
-  
+版本[1.1.3](CHANGELOG.md#113)已经加入对话管理端
+
+#### 管理对话
 版本[1.1.3](CHANGELOG.md#113 )已经加入对话管理端。
-  
+
 目前支持操作：
   - 添加对话
   - 删除对话
-  
-  
 ####  其他操作
-  
   
 我在`leancloud.py`中添加了详细的函数方法提示，[CHANGELOG](./CHANGELOG.md ) 中简单地也提到了用法
   
@@ -154,8 +126,9 @@
 - [x] 更新英文版 README 和 CHANGELOG(锻炼英语(~~bushi~~)
 - [ ] 解决必须使用 master key 才能使用 api 的权限问题
 - [ ] 添加 github api 新版本检测
+- [ ] 增加注销用户等服务
 - [ ] 管理端添加重命名对话功能
-  
+
 ---
   
 ##  开发环境
@@ -187,4 +160,3 @@
   
 还有
 求求有没有大佬请教一下pyqt5怎么做页面美化，默认的界面太丑了。谢谢谢谢
-  

@@ -1,4 +1,9 @@
-#  SecretChat
+<div align="center">
+
+# 秘密聊天室 - SecretChat
+
+**中文 [README.md](README.md) | English [README_en.md](README_en.md)**
+</div>
   
   
 Recently I find Leancloud has many free functions can be used.So wanted to write a chat program.After reading[official document](https://docs.leancloud.app/ ),I thought there was a lot of freedom here.Every program I've written before looks like crap.So I want to make this program to be useful and formally.
@@ -8,30 +13,7 @@ This program is by design to just use the free serves of Leancloud(~~Free is the
   
 Actually Leancloud officially provides a Python library,but I don't know how to use. So I use REST api to make a new class.
   
-##  Contens
-  
-  
-- [HOW TO USE](#how-to-use )
-  - [Clone this project](#clone-this-project )
-    - [Install python dependencies](#install-python-dependencies )
-  - [Get any keys of LeanCloud](#get-any-keys-of-leancloud )
-    - [Register a LeanCloud account](#register-a-leancloud-account )
-    - [Create app](#create-app )
-    - [Configuration Settings](#configuration-settings )
-    - [Choose Settings](#choose-settings )
-    - [Choose[Settings]>[App keys]](#choosesettingsapp-keys )
-    - [Get keys](#get-keys )
-  - [Configuration keys](#configuration-keys )
-  - [Run](#run )
-    - [Manage conversation](#manage-conversation )
-    - [Other actions](#other-actions )
-- [About security](#about-security )
-- [CHANGELOG](#changelog )
-- [TODO](#todo )
-- [development environments](#development-environments )
-- [LICENSE](#license )
-- [PS](#ps )
-  
+--- 
 ##  HOW TO USE
   
   
@@ -141,6 +123,7 @@ If the masterkey is leaked, you can go to the webpage where you obtained the mas
 - [x] Update English version README and CHANGELOG(Practice English(~~bushi~~
 - [ ] Resolve the problems of api permission
 - [ ] Use github api to check update
+- [ ] Add the function of delete users
 - [ ] Add the function of rename conversation to `admin.py`
 ---
   
