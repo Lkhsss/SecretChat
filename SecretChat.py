@@ -15,7 +15,7 @@ import icon_rc
 import ctypes
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")#更改任务栏图标
 
-version = "1.0.2" # 版本号。详见CHANGELOG
+version = "1.1.3" # 版本号。详见CHANGELOG
 
 class Mainwindow_ui(QMainWindow, Ui_MainWindow):
     def __init__(self):
